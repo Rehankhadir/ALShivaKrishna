@@ -1,0 +1,40 @@
+<!-- Start Button -->
+<div class="button-container">
+    <button class="btn btn-primary start-btn" (click)="startMigration()">Start</button>
+</div>
+
+<div
+  class="offcanvas offcanvas-bottom"
+  tabindex="-1"
+  [ngClass]="{ 'show': showOffcanvas }"
+  [ngStyle]="{ 'visibility': showOffcanvas ? 'visible' : 'hidden' }"
+>
+    <div class="offcanvas-header offcanvas-toggle">
+        <span ><i class="fa-solid fa-rocket"></i>  Migrating Data to selected environment</span> <!-- Replace with your icon -->
+        <button  class="toggle-btn" (click)="toggleOffcanvas()">
+            <div>
+                <span *ngIf="showOffcanvasloader" class="toggle-icon">&#9660;</span> <!-- Dropdown icon -->
+                <span *ngIf="!showOffcanvasloader" class="toggle-icon">&#9650;</span>
+            </div>    
+        </button>
+    </div>
+    <div class="offcanvas-body"
+    [ngStyle]="{ 'visibility': showOffcanvasloader ? 'visible' : 'hidden' }"
+    >
+        <div class="progress-bar-container">
+            <div class="progress mt-3">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  [style.width]="progress + '%'"
+                  [attr.aria-valuenow]="progress"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  {{ progress }}%
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
